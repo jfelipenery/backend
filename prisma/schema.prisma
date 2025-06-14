@@ -9,6 +9,42 @@ datasource db {
 
 model User {
   id    Int    @id @default(autoincrement())
-  name  String
+  firstname  String
+  surname String 
   email String @unique
+  password String
 }
+
+model Categories {
+  id    Int    @id @default(autoincrement())
+  name  String
+  slug String 
+  use_in_menu Boolean? @unique
+  
+}
+
+model produtos {
+  id    Int    @id @default(autoincrement())
+  enabled  Boolean
+  name String 
+  slug String
+  use_in_menu Boolean? @unique
+  stock Int
+  description String
+  price Float
+  price_with_discount Float
+  
+}
+
+model opcoes_de_produtos {
+  id    Int    @id @default(autoincrement())
+  product_id  Int
+  title String 
+  shape String
+  radius Int
+  type String
+  values String
+    
+}
+
+
