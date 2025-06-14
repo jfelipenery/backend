@@ -6,10 +6,10 @@ const prisma = new PrismaClient();
 
 // Criar usuário
 router.post('/', async (req, res) => {
-    const { name, email } = req.body;
+    const { firstname, surname, email, password } = req.body;
     try {
         const user = await prisma.user.create({
-            data: { name, email }
+            data: { firstname, surname, email, password }
         });
         res.json(user);
     } catch (error) {
@@ -34,11 +34,11 @@ router.get('/:id', async (req, res) => {
 // Atualizar usuário
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, email } = req.body;
+    const { firstname, surname, email, password } = req.body;
     try {
         const user = await prisma.user.update({
             where: { id: parseInt(id) },
-            data: { name, email }
+            data: { firstname, surname, email, password }
         });
         res.json(user);
     } catch (error) {
