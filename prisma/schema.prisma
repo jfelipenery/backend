@@ -19,7 +19,7 @@ model Categories {
   id    Int    @id @default(autoincrement())
   name  String
   slug String 
-  use_in_menu Boolean? @unique
+  use_in_menu Boolean
   
 }
 
@@ -28,7 +28,7 @@ model produtos {
   enabled  Boolean
   name String 
   slug String
-  use_in_menu Boolean? @unique
+  use_in_menu Boolean
   stock Int
   description String
   price Float
