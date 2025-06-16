@@ -14,10 +14,10 @@ router.post('/login', async (req, res) => {
 
   try {
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) return res.status(404).json({ error: 'Usuário não encontrado' });
+    if (!user) return res.status(404).json({ error: 'Usuário ou Senha incorretos' });
 
     const passwordConfere = await bcrypt.compare(password, user.password);
-    if (!passwordConfere) return res.status(401).json({ error: 'Senha incorreta' });
+    if (!passwordConfere) return res.status(401).json({ error: 'Usuário ou Senha incorretos'});
 
     // Gerar token JWT
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
