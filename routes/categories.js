@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         const categories = await prisma.categories.create({
             data: { name, slug, use_in_menu }
         });
-        res.json(categories);
+        res.status(201).json(categories);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
         await prisma.categories.delete({
             where: { id: parseInt(id) }
         });
-        res.json({ message: 'Categoria deletada' });
+        res.status(204);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

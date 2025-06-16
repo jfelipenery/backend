@@ -75,7 +75,7 @@ router.put('/:id', verificarToken, async (req, res) => {
             where: { id: parseInt(id) },
             data: { firstname, surname, email, password : hashedPassword },
         });
-        res.json(user);
+        res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -98,7 +98,7 @@ router.delete('/:id', verificarToken , async (req, res) => {
         await prisma.user.delete({
             where: { id: parseInt(id) }
         });
-        res.json({ message: 'Usuário deletado' });
+        res.status(204);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

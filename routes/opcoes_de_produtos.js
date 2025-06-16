@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         const opcoesProduto = await prisma.opcoes_de_produtos.create({
             data: { product_id, title, shape, radius, type, values }
         });
-        res.json(opcoesProduto);
+        res.status(201).json(opcoesProduto);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
         await prisma.opcoes_de_produtos.delete({
             where: { id: parseInt(id) }
         });
-        res.json({ message: 'Opcões de produtos deletado' });
+        res.status(204);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

@@ -11,9 +11,10 @@ router.post('/', async (req, res) => {
         const produtos = await prisma.produtos.create({
             data: { enabled, name, slug, use_in_menu, stock, description, price, price_with_discount }
         });
-        res.json(produtos);
+        res.status(201).json(produtos);
     } catch (error) {
         res.status(400).json({ error: error.message });
+        
     }
 });
 
@@ -63,7 +64,7 @@ router.delete('/:id', async (req, res) => {
         await prisma.produtos.delete({
             where: { id: parseInt(id) }
         });
-        res.json({ message: 'Produto deletado' });
+        res.status(204);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

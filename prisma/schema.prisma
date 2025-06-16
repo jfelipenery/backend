@@ -20,7 +20,7 @@ model Categories {
   name  String
   slug String 
   use_in_menu Boolean
-  
+  relProduto produtos[]
 }
 
 model produtos {
@@ -33,6 +33,7 @@ model produtos {
   description String
   price Float
   price_with_discount Float
+  relProduto Categories[]
   
 }
 
