@@ -40,12 +40,20 @@ router.post('/login', async (req, res) => {
 // Criar usuário
 router.post('/', async (req, res) => {
     const { firstname, surname, email, password} = req.body;
+    if (!firstname || !surname || !email || !password) {
+        return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+    }
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      return res.status(401).json({ error: 'Usuário já existe' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         const user = await prisma.user.create({
             data: { firstname, surname, email, password : hashedPassword },
         });
-        res.json(user);
+        res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
