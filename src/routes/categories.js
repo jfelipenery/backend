@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
         await prisma.categories.delete({
             where: { id: parseInt(id) }
         });
-        res.status(204);
+        return res.status(204).send();
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

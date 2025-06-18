@@ -106,7 +106,7 @@ router.delete('/:id', verificarToken , async (req, res) => {
         await prisma.user.delete({
             where: { id: parseInt(id) }
         });
-        res.status(204);
+        return res.status(204).send();
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
