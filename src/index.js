@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { PrismaClient } = require('@prisma/client');
-const userRoutes = require('./routes/user');
-const categoriesRoutes = require('./routes/categories');
-const produtosRoutes = require('./routes/produtos');
-const opcoes_de_produtosRoutes = require('./routes/opcoes_de_produtos');
+const userRoutes = require('../src/routes/user');
+const categoriesRoutes = require('../src/routes/categories');
+const produtosRoutes = require('../src/routes/produtos');
+const opcoes_de_produtosRoutes = require('../src/routes/opcoes_de_produtos');
 
 dotenv.config();
 const prisma = new PrismaClient();
