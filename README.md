@@ -27,21 +27,17 @@ Este projeto é um backend construído com **Node.js**, **Express** e **Prisma O
 
 1. Clone o repositório:
 
-```bash
+
 git clone https://github.com/jfelipenery/backend.git
 cd backend
 Instale as dependências:
 
-bash
-Copy
-Edit
+
 npm install
 🛠️ Configurando o Banco de Dados
 Edite o arquivo .env com a URL de conexão do banco de dados MySQL:
 
-env
-Copy
-Edit
+
 DATABASE_URL="mysql://root:123456@localhost:3306/backend"
 🧩 Definição do Modelo (schema.prisma)
 prisma
@@ -95,9 +91,7 @@ model OpcoesDeProdutos {
 🧱 Criando a Base de Dados
 Para gerar a base e aplicar as migrações:
 
-bash
-Copy
-Edit
+
 npx prisma migrate dev --name init
 Esse comando:
 
@@ -109,8 +103,7 @@ Atualiza o Prisma Client para refletir os modelos.
 
 ✏️ Uso no Código
 js
-Copy
-Edit
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
